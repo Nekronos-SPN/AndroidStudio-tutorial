@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://nekronos-spn.github.io',
+	base: '/AndroidStudio-tutorial',
 	integrations: [
 		starlight({
 			title: 'Chronometer App',
