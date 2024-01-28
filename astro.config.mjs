@@ -7,18 +7,34 @@ export default defineConfig({
 	base: '/AndroidStudio-tutorial',
 	integrations: [
 		starlight({
-			title: 'Chronometer App',
+			title: 'Android Chronometer',
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Android Studio IDE',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', link: '/guides/example/' },
+						{ label: 'Installation', link: './guides/installation/' },
+						{ label: 'IDE layout', link: './guides/layout/' },
+						{ label: 'Project structure', link: './guides/structure/' },
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'Running Your Program',
+					items: [
+						{ label: 'Compilation', link: './guides/compilation/' },
+						{ label: 'Execution', link: './guides/execution/' },
+					],
+				},
+				{
+					label: 'Developing The App',
+					items: [
+					],
+				},
+				{
+					label: 'Next Steps',
+					items: [
+						{ label: 'Recommended readings', link: './additional/readings/' },
+						{ label: 'Cool projects', link: './additional/installation/' },
+					],
 				},
 			],
 		}),
