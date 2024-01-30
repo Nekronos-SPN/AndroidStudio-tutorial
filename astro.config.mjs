@@ -4,7 +4,6 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://nekronos-spn.github.io',
-	base: '/AndroidStudio-tutorial',
 	integrations: [
 		starlight({
 			title: 'Android Chronometer',
@@ -12,22 +11,15 @@ export default defineConfig({
 				{
 					label: 'Android Studio IDE',
 					items: [
-						{ label: 'Installation', link: './guides/installation/' },
-						{ label: 'IDE layout', link: './guides/layout/' },
-						{ label: 'Project structure', link: './guides/structure/' },
-					],
-				},
-				{
-					label: 'Running Your Program',
-					items: [
-						{ label: 'Compilation', link: './guides/compilation/' },
-						{ label: 'Execution', link: './guides/execution/' },
+						{ label: 'Installation', link: './guides/setup/installation/' },
+						{ label: 'IDE layout', link: './guides/setup/layout/' },
+						{ label: 'Project structure', link: './guides/setup/structure/' },
 					],
 				},
 				{
 					label: 'Developing The App',
 					items: [
-					{label: 'Components', link: './guides/development/display_components/'},
+					{label: 'Components', link: './guides/development/components/'},
 					{label: 'Style', link: './guides/development/style/'},
 					{label: 'Functionality', link: './guides/development/functionality/'}
 					],
