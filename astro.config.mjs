@@ -27,6 +27,9 @@ export default defineConfig({
 				{
 					label: 'Developing The App',
 					items: [
+					{label: 'Components', link: './guides/development/display_components/'},
+					{label: 'Style', link: './guides/development/style/'},
+					{label: 'Functionality', link: './guides/development/functionality/'}
 					],
 				},
 				{

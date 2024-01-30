@@ -1,0 +1,169 @@
+---
+title: Style
+description: Lets start with the style of a document
+template: splash
+---
+
+# Functionality
+## Gradle script
+First of all we must change from the Gradle Script some files to be able to use a pluggin. This is explained on the .... part
+
+#TODO link to the part where it is explained what to change from Gradle Script. Write in the 3 periods above the name of the document where this info is going to be
+
+## First fragment
+The first part will be to get the document where we will change the functionality. Lets go to app/java/com.example.newproject/FirstFragment.
+Firstly, we will add an import we need for the chronometer to be created
+
+#TODO code snipet import android.widget.Chronometer;
+
+Afterwards we will prepare all the variables we need for this project. This variables will be written after this line of code
+
+#TODO code snipet private FragmentFirstBinding binding;
+
+The variables will be the followings:
+
+The chronometer we will use:
+
+#TODO code snipet    private Chronometer chronometer;
+
+A variable that will let us know if the chronometer is on or off
+#TODO code snipet    boolean isRunning = false;
+
+The next variable will work as the initial moment that will be set to the chronometer
+#TODO code snipet    long base;
+
+The variable stop will be use to get the specific time after stoping the chronometer. This is needed because the base is going to be based
+on SystemClock.elapsedRealtime(); which return the time since the system was booted, and include deep sleep. Because of this, when we try
+to stop the clock(), we are not really stoping it because the time since the system was booting would be increased, so we will need to get the 
+specific stop hour to calculate the moment of stop of the chronometer.
+
+#TODO code snipet    long stop;
+
+This variable will get the difference between the stop moment and the base moment we got when we start again the chronometer.
+#TODO code snipet    long totalTime = 0;
+
+
+Afterwards we will need to initialize the chronometer and a list which get the times when we press the lap buttons
+The two lines of code will need to be below the following line.
+ 
+#TODO snipet code super.onViewCreated(view, savedInstanceState);
+
+The two lines to add are the followings
+
+#TODO snipet code chronometer = binding.idCMmeter;
+             List<String> lapList = new ArrayList<>();
+
+Finally we will need to change the eventListener is already created and create a few more.
+As we have change the id from the next button we must change the binding reference to the following
+
+#TODO code snipet binding.nextButton.setOnClickListener(new View.OnClickListener(){...
+
+As we will need to send some arguments to the second fragment. We must cast to an array of strings the list of lapList
+and send it to second fragment. This listener will finally look like this:
+
+#TODO code snipet 
+binding.nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] myArray = lapList.toArray(new String[0]);
+                FirstFragmentDirections.ActionFirstFragmentToSecondFragment action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(myArray);
+                NavHostFragment.findNavController(FirstFragment.this).navigate(action);
+            }
+        });
+
+
+We must prepare as well on the graph this parameter to be passed so we must go to app/res/navigation/nav_graph.xml
+When we get there we must click on the SecondFragment screen and on the attributes part in the arguments you will have
+"Nothing to show". To add an argument please press on the + sign
+#TODO nav_graph_arguments.png
+
+Pressing on the + sign you will get the follwing screen, fill it as it is shown
+
+#TODO arguments_creation.png
+
+For the reset button we only need to reset the total time to 0 and get the base again.
+We will let the functionality of chronometer as it was before pressing the start, so if it was stopped the chronometer will
+be stopped and in case it was running, the chronometer will automatically start running.
+
+#TODO snipet code 
+binding.resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // on below line we are checking if
+                // chronometer is running or not.
+                stop = SystemClock.elapsedRealtime();
+                totalTime = 0;
+                base = SystemClock.elapsedRealtime() - totalTime;
+                chronometer.setBase(base);
+                if (isRunning){
+                    chronometer.start();
+                }
+                else {
+                    chronometer.stop();
+                }
+                lapList.clear();
+            }
+        });
+    }
+
+The next button will be the lap button. As it is described on the code, this function will prepare a string
+with the actual time that is set on the chronometer and save it on the array lapList.
+
+#TODO snipet code
+binding.lapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                long millis = SystemClock.elapsedRealtime() - chronometer.getBase();
+
+                int seconds = (int) (millis / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                int hours = minutes / 60;
+                minutes = minutes % 60;
+
+                String lapTime = String.format("%d:%02d:%02d", hours, minutes, seconds);
+                lapList.add(lapTime);
+            }
+        });
+
+The last function will be the button of star/pause. This function will check if the chronometer was running or not
+before pressing the button. In case it was running it will get the time where it stopped, to start afterwards from that time.
+If it wasn't running it will calculate the base based on the totalTime of the chronometer on and start it
+
+
+#TODO snipet code
+binding.startPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // on below line we are checking if
+                // chronometer is running or not.
+                if (isRunning) {
+                    binding.startPauseButton.setText("Start");
+                    isRunning = false;
+                    stop = SystemClock.elapsedRealtime();
+                    totalTime = stop - base;
+                    chronometer.stop();
+                } else {
+                    binding.startPauseButton.setText("Stop");
+                    isRunning = true;
+                    base = SystemClock.elapsedRealtime() - totalTime;
+                    chronometer.setBase(base);
+                    chronometer.start();
+                }
+            }
+        });
+
+## Second fragment
+
+For the second fragment you must prepare the code to get the parameters
+We receive it in a new string array called lapList and afterwards create a string to 
+display the values of the lap on the screen. This two lines must be below the following line
+
+#TODO snipet code super.onViewCreated(view, savedInstanceState);
+
+The two lines would be:
+
+#TODO snipet code 
+String[] lapList = SecondFragmentArgs.fromBundle(getArguments()).getMyArg();
+
+String myString = String.join("\n", lapList);

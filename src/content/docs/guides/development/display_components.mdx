@@ -1,0 +1,118 @@
+---
+title: Components
+description: Lets start with the components of a document
+template: splash
+---
+
+#Components
+##Introduction
+The first part of the developing section on this tutorial is to learn about the components of the document. 
+On this document we will learn how to create a new chronometer, new buttons and organize them.
+
+## Add and erase new components
+First of all we must locate where are the text encoded. We must go to app/res/layout/fragment_first.xml.
+After opening this document you will see the following display
+
+#TODO fragment_first.png
+
+In the upper right corner of the Design editor, find the three icons that look like this
+
+#TODO change_view.png
+
+These represent Code (code only), Split (code + design), and Design (design only) views.
+Please go to the code part. You will see the following display after changing the display of the document.
+
+#TODO
+
+The first thing we will make is to erase the TextView fragment of code and add the following one
+
+#TODO snipet code of:
+        <Chronometer
+            android:id="@+id/idCMmeter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+You will see the following error on the button (red line)
+
+#TODO button_error.png
+
+You must erase the error and the code must finally be like this
+
+#TODO final_fragment_first.png
+
+## Change components display and add new buttons
+
+We will add new buttons change the dispaly of the page and the components. First of all we must get back to the Design view we talked about before. 
+After getting on it you will see the button and the chronometer together. We will display them on screen correctly.
+The first step is to click on the white phone screen.
+
+#TODO attributes_display.png
+
+You must search Common Attributes section and change to true the fillViewport
+
+#TODO fill_view_port.png
+
+
+Afterwards, click on the button and move it below the chronometer. To add a new button you must drag and drop from the button found on the palette and send it to the screen.
+
+#TODO palette.png
+
+Do this until you get 4 buttons on the screen and move them until they are displayed like this. The button that was created at the beginning must be below the three new ones
+
+#TODO four_buttons.png
+
+You must change the name of the button and the text display on it. For it you must change the attribute id for the name and the attribute text to change the text of the button
+
+#TODO button_name.png 
+
+Before getting the next part of the tutorial you must have the buttons like this
+
+#TODO reset_name.png
+
+#TODO start_name.png
+
+#TODO lap_name.png
+
+#TODO next_name.png
+
+Don't take into account the lines that connect the components, only the attributes id and text from each component. The lines that connect each component are constraints
+and is the following point of the tutorial.
+
+## Constraints
+
+For constraints we must press on the component we one to change. We will first press on the chronometer. You will see the constraints are already created and the 
+chronometer is connected to the top, bottom, left and right sides of the device.
+
+#TODO constraints_chronometer.png
+
+If it is not already like this, you can add constraints by pressing on one of the big dots of the chronometer component and connecting it with the mouse to the 
+correspondant site.
+
+As well on the attributes section there is a constraint part where you can select a constraint and delete it
+
+#TODO constraints_attributes.png
+
+You must add and delete constraints from the buttons as well. The final result of the constraints for each component must be the following
+
+#TODO constraints_chronometer.png
+
+#TODO constraints_next.png
+
+#TODO constraints_reset.png
+
+#TODO constraints_start.png
+
+#TODO constraints_lap.png

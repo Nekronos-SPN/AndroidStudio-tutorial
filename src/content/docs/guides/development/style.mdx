@@ -1,0 +1,42 @@
+---
+title: Style
+description: Lets start with the style of a document
+template: splash
+---
+
+#Components
+## Style 
+On this second part we are going to talk about the style of the document.
+
+## Hardcoded text
+The first part will be to resolve a warning about strings. We will get back to the code section mentioned on the first part of the tutorial.
+On it we will see each button the line of text with a warning. To solve it you must click on the light bulb and extract string resources
+
+#TODO string_warning
+
+Afterwards it will appear a new window, press ok. Do this with every warning.
+The string resource will be added to app/res/values/strings.xml
+
+## Change button colors
+To change the button color firstly we will add a new color to the colors.xml. Lets go to app/res/values/colors.xml and add this line
+
+#TODO code snipet <color name="buttonBackground">#BBDEFB</color>
+
+Afterwards, get back to the code part of fragment_first and add to each button the following line 
+
+#TODO code snipet android:background="@color/buttonBackground"
+
+To change the background color of the screen we are going to learn a different form of changing style on components. 
+First we will get back to the design window. On it we will click on the screen and finally we will change on the attribute background the value to the color we want.
+
+#TODO background_color.png
+
+If you click on any component as well (buttons or chronometer) you will see you can change attributes of it as well
+
+#TODO attributes_style.png
+
+
+
+
+
+
