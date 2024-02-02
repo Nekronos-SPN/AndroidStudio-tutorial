@@ -95,6 +95,7 @@ Pressing on the + sign you will get the follwing screen, fill it as it is shown
 
 ![arguments_creation](../../../../assets/images/arguments_creation.png)
 
+Lets get back to  the FirstFragment document to add more eventListeners. We must add them inside the onViewCreated function. 
 For the reset button, we only need to reset the total time to zero and reinitialize the base. 
 We'll keep the functionality of the chronometer as it was prior to pressing the start button. 
 So, if the chronometer was stopped, it will remain stopped. Conversely, if it was running, the chronometer will resume running automatically.
@@ -142,7 +143,7 @@ binding.lapButton.setOnClickListener(new View.OnClickListener() {
         });
 ```
 
-The last function will be the button of star/pause. This function will check if the chronometer was running or not
+The last function will be the button of start/pause. This function will check if the chronometer was running or not
 before pressing the button. In case it was running it will get the time where it stopped, to start afterwards from that time.
 If it wasn't running it will calculate the base based on the totalTime of the chronometer on and start it
 
@@ -185,4 +186,5 @@ The two lines would be:
 ```java
 String[] lapList = SecondFragmentArgs.fromBundle(getArguments()).getMyArg();
 String myString = String.join("\n", lapList);
+binding.textviewSecond.setText(myString);
 ```
