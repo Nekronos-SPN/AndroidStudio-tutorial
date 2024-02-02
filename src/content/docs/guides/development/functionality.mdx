@@ -1,6 +1,6 @@
 ---
 title: Functionality
-description: Lets start with the style of a document
+description: Lets start with the functionality of the app
 template: doc
 ---
 
@@ -10,8 +10,7 @@ First of all we must change from the Gradle Script some files to be able to use 
 #TODO Esto lo vas a terner que explicar tu
 
 ## First fragment
-The first part will be to get the document where we will change the functionality. Lets navigate to the folder `app/java/com.example.newproject/FirstFragment`.
-Firstly, we will add an import we need for the chronometer to be created
+The initial step involves locating the document where we'll modify the functionality. Let's proceed to the directory app/java/com.example.newproject/FirstFragment. First, we need to include the necessary import for creating the chronometer.
 
 ```java
 import android.widget.Chronometer;
@@ -37,26 +36,29 @@ The next variable will work as the initial moment that will be set to the chrono
 ```java
 long base;
 ```
-The variable stop will be use to get the specific time after stoping the chronometer. This is needed because the base is going to be based
-on SystemClock.elapsedRealtime(); which return the time since the system was booted, and include deep sleep. Because of this, when we try
-to stop the clock(), we are not really stoping it because the time since the system was booting would be increased, so we will need to get the 
-specific stop hour to calculate the moment of stop of the chronometer.
+The variable stop will be utilized to capture the precise time when the chronometer is stopped. 
+This is essential because the chronometer's base is set using SystemClock.elapsedRealtime(), 
+which returns the time elapsed since the device was last booted, including any periods of deep sleep. As such, 
+when we attempt to stop the chronometer, we aren't truly halting its countdown. Instead, the time since the device was booted continues to increase. 
+Therefore, we need to obtain the specific stop time to accurately calculate the moment the chronometer was stopped
 
 ```java
 long stop;
 ```
-This variable will get the difference between the stop moment and the base moment we got when we start again the chronometer.
+This variable will be used to compute the difference between the moment when the chronometer was stopped (stop) and the moment when it was started again 
+(base). This computation is crucial because it helps to determine the exact duration of the chronometer's operation, 
+taking into account any interruptions or pauses during its run time
 ```java
 long totalTime = 0;
 ```
 
-Afterwards we will need to initialize the chronometer and a list which get the times when we press the lap buttons
-The two lines of code will need to be below the following line.
+Afterwards we will need to initialize the chronometer and a list which get the times when we press the lap button.
+The two lines of code must be below the following line.
  
 ```java
 super.onViewCreated(view, savedInstanceState);
 ```
-The two lines to add are the followings
+The two lines to add are the following ones:
 
 ```java
 chronometer = binding.idCMmeter;
@@ -64,13 +66,13 @@ List<String> lapList = new ArrayList<>();
 ```
 
 Finally we will need to change the eventListener is already created and create a few more.
-As we have change the id from the next button we must change the binding reference to the following
+As we have change the id from the next button we must change the binding reference to the following:
 
 ```java
 binding.nextButton.setOnClickListener(new View.OnClickListener(){...
 ```
 
-As we will need to send some arguments to the second fragment. We must cast to an array of strings the list of lapList
+As we will need to send some arguments to the second fragment, we must cast to an array of strings the list of lapList
 and send it to second fragment. This listener will finally look like this:
 
 ```java
@@ -85,18 +87,17 @@ binding.nextButton.setOnClickListener(new View.OnClickListener() {
 ```
 
 
-We must prepare as well on the graph this parameter to be passed so we must go to app/res/navigation/nav_graph.xml
-When we get there we must click on the SecondFragment screen and on the attributes part in the arguments you will have
-"Nothing to show". To add an argument please press on the + sign
+We should also prepare the graph to accept this parameter. For this, navigate to app/res/navigation/nav_graph.xml. 
+Once there, select the SecondFragment screen. In the attributes section under arguments, if it says "Nothing to show", click on the '+' sign to add an argument
 ![nav_graph_arguments](../../../../assets/images/nav_graph_arguments.png)
 
 Pressing on the + sign you will get the follwing screen, fill it as it is shown
 
 ![arguments_creation](../../../../assets/images/arguments_creation.png)
 
-For the reset button we only need to reset the total time to 0 and get the base again.
-We will let the functionality of chronometer as it was before pressing the start, so if it was stopped the chronometer will
-be stopped and in case it was running, the chronometer will automatically start running.
+For the reset button, we only need to reset the total time to zero and reinitialize the base. 
+We'll keep the functionality of the chronometer as it was prior to pressing the start button. 
+So, if the chronometer was stopped, it will remain stopped. Conversely, if it was running, the chronometer will resume running automatically.
 
 ```java
 binding.resetButton.setOnClickListener(new View.OnClickListener() {

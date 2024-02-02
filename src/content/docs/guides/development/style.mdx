@@ -8,16 +8,17 @@ template: doc
 On this second part we are going to talk about the style of the document.
 
 ## Hardcoded text
-The first part will be to resolve a warning about strings. We will get back to the code section mentioned on the first part of the tutorial.
-On it we will see each button the line of text with a warning. To solve it you must click on the light bulb and extract string resources
+To address the warning about strings, we'll revisit the code section discussed earlier in the tutorial. 
+Here, each button will display a line of text marked with a warning. To rectify this, click on the light bulb icon that appears next to the warning and choose the option to extract string resources. 
+This process will move the hardcoded strings to the res/values/strings.xml file, ensuring they can be managed and localized more efficiently
 
 ![string_warning](../../../../assets/images/string_warning.png)
 
-Afterwards it will appear a new window, press ok. Do this with every warning.
-The string resource will be added to app/res/values/strings.xml
+After resolving each warning, a new window will appear. Click 'OK' to confirm. 
+Repeat this process for every warning. The string resource will be added to the app/res/values/strings.xml file
 
 ## Change button colors
-To change the button color firstly we will add a new color to the colors.xml. Lets go to app/res/values/colors.xml and add this line
+To change the button color firstly we will add a new color for the colors.xml. Lets go to app/res/values/colors.xml and add this line
 
 ```xml
 <color name="buttonBackground">#BBDEFB</color>
@@ -29,9 +30,8 @@ Afterwards, get back to the code part of fragment_first and add to each button t
 android:background="@color/buttonBackground"
 ```
 
-To change the background color of the screen we are going to learn a different form of changing style on components. 
-First we will get back to the design window. On it we will click on the screen and finally we will change on the attribute background the value to the color we want.
-
+To alter the screen's background color, we'll explore a method of adjusting styles on components. 
+First, switch back to the design window. Then, select the screen and adjust the attribute 'background' to the desired color
 ![background_color](../../../../assets/images/background_color.png)
 
 If you click on any component as well (buttons or chronometer) you will see you can change attributes of it as well
