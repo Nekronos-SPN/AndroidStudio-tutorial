@@ -192,9 +192,44 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"guides/installation.mdx": {
-	id: "guides/installation.mdx";
-  slug: "guides/installation";
+"guides/development/components.mdx": {
+	id: "guides/development/components.mdx";
+  slug: "guides/development/components";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"guides/development/functionality.mdx": {
+	id: "guides/development/functionality.mdx";
+  slug: "guides/development/functionality";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"guides/development/style.mdx": {
+	id: "guides/development/style.mdx";
+  slug: "guides/development/style";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"guides/setup/installation.mdx": {
+	id: "guides/setup/installation.mdx";
+  slug: "guides/setup/installation";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"guides/setup/layout.mdx": {
+	id: "guides/setup/layout.mdx";
+  slug: "guides/setup/layout";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"guides/setup/structure.mdx": {
+	id: "guides/setup/structure.mdx";
+  slug: "guides/setup/structure";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
