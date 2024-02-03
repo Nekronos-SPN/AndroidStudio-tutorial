@@ -4,39 +4,40 @@ description: Lets start with the style of a document
 template: doc
 ---
 
-## Style 
-On this second part we are going to talk about the style of the document.
+On this second part you will be learning how to style the different components we created on the last secition. 
 
 ## Hardcoded text
 To address the warning about strings, we'll revisit the code section discussed earlier in the tutorial. 
 Here, each button will display a line of text marked with a warning. To rectify this, click on the light bulb icon that appears next to the warning and choose the option to extract string resources. 
-This process will move the hardcoded strings to the res/values/strings.xml file, ensuring they can be managed and localized more efficiently
+This process will move the hardcoded strings to the `res/values/strings.xml` file, ensuring they can be managed and localized more efficiently
 
 ![string_warning](../../../../assets/images/string_warning.png)
 
 After resolving each warning, a new window will appear. Click 'OK' to confirm. 
-Repeat this process for every warning. The string resource will be added to the app/res/values/strings.xml file
+Repeat this process for every warning. The string resource will be added to the `app/res/values/strings.xml` file
 
 ## Change button colors
-To change the button/chronometer color firstly we will add a new color for the colors.xml. Lets go to app/res/values/colors.xml and add this line
+To change the button/chronometer color firstly we will add a new color for the `colors.xml`. Lets go to `app/res/values/colors.xml` and add this line
 
 ```xml
 <color name="buttonBackground">#BBDEFB</color>
 ```
 
-Afterwards, get back to the code part of fragment_first and add to the chronometer the following line 
+Afterwards, get back to the code view of `fragment_first` and add to the chronometer the following line:
 
 ```xml
 android:background="@color/buttonBackground"
 ```
 
 To alter the screen's background color, we'll explore a method of adjusting styles on components. 
-First, switch back to the design window. Then, select the screen and adjust the attribute 'background' to the desired color
+First, switch back to the design window. Then, select the screen and adjust the attribute _background_ to the desired color
 ![background_color](../../../../assets/images/background_color.png)
 
-If you click on any component as well (buttons or chronometer) you will see you can change attributes of it as well
+If you click on any component (buttons or chronometer), a menu will pop up where you can change attributes the component.
 
 ![attributes_style](../../../../assets/images/attributes_style.png)
+
+Great, now you know how to style you application and how to add personality to it. To continue the tutorial, navigate to the [functionality section](../../development/functionality). You will learn how to make your app interactive trough the components in the screen
 
 
 

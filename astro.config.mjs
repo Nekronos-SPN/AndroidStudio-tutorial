@@ -19,16 +19,16 @@ export default defineConfig({
 				{
 					label: 'Developing The App',
 					items: [
-					{label: 'Components', link: './guides/development/components/'},
-					{label: 'Style', link: './guides/development/style/'},
-					{label: 'Functionality', link: './guides/development/functionality/'}
+					{label: 'Creating Components', link: './guides/development/components/'},
+					{label: 'Styling The Components', link: './guides/development/style/'},
+					{label: 'Creating Functionality', link: './guides/development/functionality/'}
 					],
 				},
 				{
 					label: 'Next Steps',
 					items: [
-						{ label: 'Recommended readings', link: './additional/readings/' },
-						{ label: 'Cool projects', link: './additional/installation/' },
+						{ label: 'Recommended readings', link: './guides/additional/readings/' },
+						{ label: 'Cool projects', link: './guides/additional/projects/' },
 					],
 				},
 			],
