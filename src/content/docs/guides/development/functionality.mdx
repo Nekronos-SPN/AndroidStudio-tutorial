@@ -5,9 +5,30 @@ template: doc
 ---
 
 ## Gradle script
-First of all we must change from the Gradle Script some files to be able to use a pluggin. This is explained on the .... part
+First of all we must change from the Gradle Script some files to be able to use a pluggin which will help us to pass arguments from one fragment to another.
 
-#TODO Esto lo vas a terner que explicar tu
+Lets go to Gradle Scripts/build.gradle.kts (Project: name of project) and add this lines of code
+```java 
+    buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        val nav_version = "2.5.3"
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+    }
+    }
+```
+ Afterwards lets go to Gradle Scripts/build.gradle.kts (Module: app). 
+ Below the following line of code:
+```java
+   id("com.android.application")
+```
+
+you must add this line:
+```java
+   id("androidx.navigation.safeargs")
+```
 
 ## First fragment
 The initial step involves locating the document where we'll modify the functionality. Let's proceed to the directory `app/java/com.example.newproject/FirstFragment`. First, we need to include the necessary import for creating the chronometer.
