@@ -5,30 +5,31 @@ template: doc
 ---
 
 ## Gradle script
-First of all we must change from the Gradle Script some files to be able to use a pluggin which will help us to pass arguments from one fragment to another.
+First of all, we have to change from the Gradle Script some files to be able to use a pluggin which will help us to pass arguments from one fragment to another.
 
-Lets go to Gradle Scripts/build.gradle.kts (Project: name of project) and add this lines of code
+Lets navigate to Gradle `Scripts/build.gradle.kts (Project: name of project)` and add the following lines of code:
 ```java 
-    buildscript {
-    repositories {
-        google()
-    }
-    dependencies {
-        val nav_version = "2.5.3"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-    }
-    }
+buildscript {
+repositories {
+    google()
+}
+dependencies {
+    val nav_version = "2.5.3"
+    classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+}
 ```
- Afterwards lets go to Gradle Scripts/build.gradle.kts (Module: app). 
- Below the following line of code:
+Afterwards, navigate to Gradle `Scripts/build.gradle.kts (Module: app)`. 
+Below the following line of code:
 ```java
-   id("com.android.application")
+id("com.android.application")
 ```
 
-you must add this line:
+You have to add this line:
 ```java
-   id("androidx.navigation.safeargs")
+id("androidx.navigation.safeargs")
 ```
+
+With the previous lines of code, we are just adding the SafeArgs plugin into Android Studio. This is necesary in order to send arguments between the fragments. 
 
 ## First fragment
 The initial step involves locating the document where we'll modify the functionality. Let's proceed to the directory `app/java/com.example.newproject/FirstFragment`. First, we need to include the necessary import for creating the chronometer.
@@ -83,13 +84,13 @@ As we will need to send some arguments to the second fragment, we must cast to a
 
 ```java
 binding.nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String[] myArray = lapList.toArray(new String[0]);
-                FirstFragmentDirections.ActionFirstFragmentToSecondFragment action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(myArray);
-                NavHostFragment.findNavController(FirstFragment.this).navigate(action);
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        String[] myArray = lapList.toArray(new String[0]);
+        FirstFragmentDirections.ActionFirstFragmentToSecondFragment action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(myArray);
+        NavHostFragment.findNavController(FirstFragment.this).navigate(action);
+    }
+});
 ```
 
 
@@ -108,44 +109,43 @@ So, if the chronometer was stopped, it will remain stopped. Conversely, if it wa
 
 ```java
 binding.resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // on below line we are checking if
-                // chronometer is running or not.
-                stop = SystemClock.elapsedRealtime();
-                totalTime = 0;
-                base = SystemClock.elapsedRealtime() - totalTime;
-                chronometer.setBase(base);
-                if (isRunning){
-                    chronometer.start();
-                }
-                else {
-                    chronometer.stop();
-                }
-                lapList.clear();
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        // on below line we are checking if
+        // chronometer is running or not.
+        stop = SystemClock.elapsedRealtime();
+        totalTime = 0;
+        base = SystemClock.elapsedRealtime() - totalTime;
+        chronometer.setBase(base);
+        if (isRunning){
+            chronometer.start();
+        }
+        else {
+            chronometer.stop();
+        }
+        lapList.clear();
     }
+});
 ```
 
 The next button will be the lap button. As it is described on the code, this function will prepare a string with the actual time that is set on the chronometer and save it on the array *lapList*.
 
 ```java
 binding.lapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                long millis = SystemClock.elapsedRealtime() - chronometer.getBase();
+    @Override
+    public void onClick(View view) {
+        long millis = SystemClock.elapsedRealtime() - chronometer.getBase();
 
-                int seconds = (int) (millis / 1000);
-                int minutes = seconds / 60;
-                seconds = seconds % 60;
-                int hours = minutes / 60;
-                minutes = minutes % 60;
+        int seconds = (int) (millis / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+        int hours = minutes / 60;
+        minutes = minutes % 60;
 
-                String lapTime = String.format("%d:%02d:%02d", hours, minutes, seconds);
-                lapList.add(lapTime);
-            }
-        });
+        String lapTime = String.format("%d:%02d:%02d", hours, minutes, seconds);
+        lapList.add(lapTime);
+    }
+});
 ```
 
 The last function will be the button of start/pause. This function will check if the chronometer was running or not
@@ -154,25 +154,25 @@ If it wasn't running it will calculate the base based on the totalTime of the ch
 
 ```java
 binding.startPauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // on below line we are checking if
-                // chronometer is running or not.
-                if (isRunning) {
-                    binding.startPauseButton.setText("Start");
-                    isRunning = false;
-                    stop = SystemClock.elapsedRealtime();
-                    totalTime = stop - base;
-                    chronometer.stop();
-                } else {
-                    binding.startPauseButton.setText("Stop");
-                    isRunning = true;
-                    base = SystemClock.elapsedRealtime() - totalTime;
-                    chronometer.setBase(base);
-                    chronometer.start();
-                }
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        // on below line we are checking if
+        // chronometer is running or not.
+        if (isRunning) {
+            binding.startPauseButton.setText("Start");
+            isRunning = false;
+            stop = SystemClock.elapsedRealtime();
+            totalTime = stop - base;
+            chronometer.stop();
+        } else {
+            binding.startPauseButton.setText("Stop");
+            isRunning = true;
+            base = SystemClock.elapsedRealtime() - totalTime;
+            chronometer.setBase(base);
+            chronometer.start();
+        }
+    }
+});
 ```
 
 ## Second fragment

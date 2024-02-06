@@ -28,8 +28,8 @@ export default defineConfig({
 				{
 					label: 'Next Steps',
 					items: [
-						{ label: 'Recommended readings', link: './guides/additional/readings/' },
 						{ label: 'Cool projects', link: './guides/additional/projects/' },
+						{ label: 'Recommended readings', link: './guides/additional/readings/' },
 					],
 				},
 			],
