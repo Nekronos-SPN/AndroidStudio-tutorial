@@ -96,6 +96,7 @@ binding.nextButton.setOnClickListener(new View.OnClickListener() {
 
 We should also prepare the graph to accept this parameter. Fits, navigate to `app/res/navigation/nav_graph.xml`. 
 Once there, select the SecondFragment screen. In the attributes section under arguments, if it says "Nothing to show", click on the '+' sign to add an argument.
+
 ![nav_graph_arguments](../../../../assets/images/nav_graph_arguments.png)
 
 Pressing on the + sign you will get the follwing screen, fill it as it is shown.
@@ -150,7 +151,7 @@ binding.lapButton.setOnClickListener(new View.OnClickListener() {
 
 The last function will be the button of start/pause. This function will check if the chronometer was running or not
 before pressing the button. In case it was running it will get the time where it stopped, to start afterwards from that time.
-If it wasn't running it will calculate the base based on the totalTime of the chronometer on and start it.
+If it wasn't running it will calculate the base based on the total time of the chronometer on and start it.
 
 ```java
 binding.startPauseButton.setOnClickListener(new View.OnClickListener() {
@@ -187,4 +188,4 @@ String myString = String.join("\n", lapList);
 binding.textviewSecond.setText(myString);
 ```
 
-Congratulations! You have successfully completed this codelab. This hands-on experience serves as a solid foundation for further exploration and mastery of Android programming. Keep building, experimenting, and embracing the exciting world of mobile app development! If you have any questions or want to explore more advanced topics, [here are some links](../../additional/readings) that might be useful. Great job on completing this codelab!
+Congratulations! You have successfully completed this codelab. This hands-on experience serves as a solid foundation for further exploration and mastery of Android programming. Keep building, experimenting, and embracing the exciting world of mobile app development! If you have any questions or want to explore more advanced topics, [here are some links](../additional/readings) that might be useful. Great job on completing this codelab!

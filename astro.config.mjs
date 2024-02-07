@@ -20,16 +20,23 @@ export default defineConfig({
 				{
 					label: 'Developing The App',
 					items: [
-					{label: 'Creating Components', link: './guides/development/components/'},
-					{label: 'Styling The Components', link: './guides/development/style/'},
-					{label: 'Creating Functionality', link: './guides/development/functionality/'}
+					{label: 'Creating components', link: './guides/development/components/'},
+					{label: 'Styling the components', link: './guides/development/style/'},
+					{label: 'Creating functionality', link: './guides/development/functionality/'}
 					],
 				},
 				{
 					label: 'Next Steps',
 					items: [
-						{ label: 'Cool projects', link: './guides/additional/projects/' },
 						{ label: 'Recommended readings', link: './guides/additional/readings/' },
+						{ label: 'Cool projects', link: './guides/additional/projects/' },
+					],
+				},
+				{
+					label: 'College Scheduler',
+					items: [
+						{ label: 'Calendar and To Do list', link: './scheduler/calendar' },
+						{ label: 'Video', link: './scheduler/video' },
 					],
 				},
 			],
